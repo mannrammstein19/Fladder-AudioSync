@@ -1,0 +1,18 @@
+{
+  "base_commit": "a30343a30754114ca66fcae921a0949003761344",
+  "files": {
+    "lib/l10n/app_en.arb": "1539242647cebe694e80d331245f7d80dc790a8d496f1fcfa1ecb5cb1a68239e",
+    "lib/l10n/app_pt.arb": "1439460f0a7ac3520b65148a705df65d504db8d7e8296f8841a8b4004218aa70",
+    "lib/l10n/app_pt_BR.arb": "3d439fdb99492397fc52591eaf2ad08dc1a2b4e63bf529b357cdfab1f8a3b1c2",
+    "lib/models/settings/video_player_settings.dart": "2ad54e4660eb04bd1c620f62b56ce9bb478bb270c01f7a562893e04df4e597fb",
+    "lib/models/settings/video_player_settings.freezed.dart": "be00629507c306c8d2c953763d5dab887caede8b26637056c84e3b93a57d1db4",
+    "lib/models/settings/video_player_settings.g.dart": "046e388a961ea6b488dbf86c64c461cb57a1f63ce31bf3fbcb1a57bc5b59588d",
+    "lib/providers/settings/video_player_settings_provider.dart": "9d7c53cf3a639ca62078503c4077013ea30c89bc07ffbd0151f4db7629c3801c",
+    "lib/screens/settings/player_settings_page.dart": "badd66c3454961085aa63f6c7964d47331dc52c88487f42cff8db9df36345f8e",
+    "lib/screens/settings/widgets/audio_sync_controls.dart": "55a1fca5bcbbe34b399a0c68ea8c0a12f5e7c22afcca8147dfaa23eb6c5c7d72",
+    "lib/screens/video_player/components/video_player_options_sheet.dart": "d2a905cc015f2a9fa5771c599cd196eccca6f78d15d99067d1c6e7859beace0b",
+    "lib/wrappers/media_control_wrapper.dart": "620a005793d36cd87856617030c29cf818e3ec810f9538aff0809fb8a828f34c",
+    "lib/wrappers/players/lib_mpv.dart": "56f6ae2c4165426b3bcdeeff506856f464b576f6dac6ee030649fa766f59fc68",
+    "test/audio_sync_test.dart": "f300fbea756c0dd48367191c1981e66d6e7623e34f35411d4c76a1af970802ea"
+  }
+}
