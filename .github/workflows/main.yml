@@ -1,2 +1,67 @@
+name: Compilar Fladder com ajuste de audio
+
 on:
   workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: upstream
+
+    steps:
+      - name: Checkout modifications
+        uses: actions/checkout@v4
+
+      - name: Checkout official Fladder 0.11.1
+        uses: actions/checkout@v4
+        with:
+          repository: DonutWare/Fladder
+          ref: a30343a30754114ca66fcae921a0949003761344
+          path: upstream
+
+      - name: Apply audio sync files
+        shell: pwsh
+        run: |
+          $overlay = Join-Path $env:GITHUB_WORKSPACE 'patch'
+          $destination = Join-Path $env:GITHUB_WORKSPACE 'upstream'
+          Get-ChildItem -Path $overlay -Recurse -File | ForEach-Object {
+            $relative = $_.FullName.Substring($overlay.Length + 1)
+            $target = Join-Path $destination $relative
+            New-Item -ItemType Directory -Force -Path (Split-Path $target -Parent) | Out-Null
+            Copy-Item -LiteralPath $_.FullName -Destination $target -Force
+          }
+          $version = (Get-Content .fvmrc | ConvertFrom-Json).flutter
+          "FLUTTER_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Get pinned dependencies
+        run: flutter pub get --enforce-lockfile
+
+      - name: Generate translations
+        run: flutter gen-l10n
+
+      - name: Analyze modified code
+        run: dart analyze --no-fatal-warnings lib/models/settings/video_player_settings.dart lib/providers/settings/video_player_settings_provider.dart lib/screens/settings/widgets/audio_sync_controls.dart lib/screens/settings/player_settings_page.dart lib/wrappers/players/lib_mpv.dart lib/wrappers/media_control_wrapper.dart lib/screens/video_player/components/video_player_options_sheet.dart
+
+      - name: Test synchronization controls
+        run: flutter test test/audio_sync_test.dart
+
+      - name: Compile Windows
+        run: flutter build windows --release --build-number=816
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Fladder-0.11.1-AudioSync-Windows
+          path: upstream/build/windows/x64/runner/Release/
+          if-no-files-found: error
