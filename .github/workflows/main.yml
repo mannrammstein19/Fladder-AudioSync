@@ -1,4 +1,4 @@
-name: Compilar Fladder com ajuste de audio
+name: Compilar Fladder com trailers e temas
 
 on:
   workflow_dispatch:
@@ -52,16 +52,16 @@ jobs:
         run: flutter gen-l10n
 
       - name: Analyze modified code
-        run: dart analyze --no-fatal-warnings lib/models/settings/video_player_settings.dart lib/providers/settings/video_player_settings_provider.dart lib/screens/settings/widgets/audio_sync_controls.dart lib/screens/settings/player_settings_page.dart lib/wrappers/players/lib_mpv.dart lib/wrappers/media_control_wrapper.dart lib/screens/video_player/components/video_player_options_sheet.dart
+        run: dart analyze --no-fatal-warnings lib/models/settings/video_player_settings.dart lib/providers/settings/video_player_settings_provider.dart lib/screens/settings/widgets/audio_sync_controls.dart lib/screens/settings/player_settings_page.dart lib/wrappers/players/lib_mpv.dart lib/wrappers/media_control_wrapper.dart lib/screens/video_player/components/video_player_options_sheet.dart lib/screens/video_player/video_player_controls.dart lib/providers/local_media_extras_provider.dart lib/util/media_extras/local_media_helpers.dart lib/util/media_extras/theme_audio_controller.dart lib/screens/details_screens/components/local_media_actions.dart lib/screens/details_screens/components/local_trailer_button.dart lib/screens/details_screens/movie_detail_screen.dart lib/screens/details_screens/series_detail_screen.dart
 
       - name: Test synchronization controls
-        run: flutter test test/audio_sync_test.dart
+        run: flutter test test/audio_sync_test.dart test/local_media_extras_test.dart
 
       - name: Compile Windows
-        run: flutter build windows --release --build-number=816
+        run: flutter build windows --release --build-number=818
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Fladder-0.11.1-AudioSync-Windows
+          name: Fladder-0.11.1-Extras-Windows
           path: upstream/build/windows/x64/runner/Release/
           if-no-files-found: error

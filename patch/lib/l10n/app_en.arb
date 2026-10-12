@@ -2868,5 +2868,17 @@
   "audioSyncTitle": "Audio synchronization",
   "audioSyncHelp": "Voice arrives after the lips move? Try a negative value, such as -200 ms. Positive values delay the audio. This setting is saved on this device; reset to 0 when changing audio outputs.",
   "audioSyncReset": "Reset to 0 ms",
-  "audioSyncBluetooth": "Try -200 ms"
+  "audioSyncBluetooth": "Try -200 ms",
+  "localTrailerLabel": "Trailer",
+  "@localTrailerLabel": {},
+  "chooseLocalTrailer": "Choose a trailer",
+  "@chooseLocalTrailer": {},
+  "localTrailerRetry": "Retry trailers",
+  "@localTrailerRetry": {},
+  "localThemeMusic": "Theme music",
+  "@localThemeMusic": {},
+  "localThemeVolume": "Theme music volume",
+  "@localThemeVolume": {},
+  "localThemeRetry": "Retry theme music",
+  "@localThemeRetry": {}
 }

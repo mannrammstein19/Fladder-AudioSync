@@ -1923,5 +1923,17 @@
   "audioSyncTitle": "Sincronização do áudio",
   "audioSyncHelp": "A voz chega depois do movimento dos lábios? Experimente um valor negativo, como -200 ms. Valores positivos atrasam o áudio. O ajuste fica salvo neste dispositivo; volte a 0 ao trocar a saída de som.",
   "audioSyncReset": "Zerar ajuste",
-  "audioSyncBluetooth": "Testar -200 ms"
+  "audioSyncBluetooth": "Testar -200 ms",
+  "localTrailerLabel": "Trailer",
+  "@localTrailerLabel": {},
+  "chooseLocalTrailer": "Escolher trailer",
+  "@chooseLocalTrailer": {},
+  "localTrailerRetry": "Tentar carregar trailers",
+  "@localTrailerRetry": {},
+  "localThemeMusic": "Música tema",
+  "@localThemeMusic": {},
+  "localThemeVolume": "Volume da música tema",
+  "@localThemeVolume": {},
+  "localThemeRetry": "Tentar tocar música tema",
+  "@localThemeRetry": {}
 }
